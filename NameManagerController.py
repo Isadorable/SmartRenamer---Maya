@@ -55,7 +55,7 @@ class NameManagerDialog(QtWidgets.QMainWindow):
             if cmds.objectType(objects_selected[0]) == 'joint':
                 cmds.mirrorJoint(objects_selected, myz=True, mb=True, sr=('_L_', '_R_'))
         else:
-            cmds.error("You must select an object")
+            cmds.warning("You must select an object")
 
 
     def create_hierarchy(self):
@@ -65,7 +65,7 @@ class NameManagerDialog(QtWidgets.QMainWindow):
 
         mesh_name = self.ui.edit_object_name.text()
         if cmds.objExists(mesh_name + "_main"):
-            cmds.error("Group already exists")
+            cmds.warning("Group already exists")
         elif mesh_name:
             cmds.group(n=mesh_name + "_main", em = True)
             cmds.group(n=mesh_name + "_global_control", em = True, p = mesh_name + "_main")
@@ -77,7 +77,7 @@ class NameManagerDialog(QtWidgets.QMainWindow):
             cmds.group(n=mesh_name + "_IK", em=True, p=mesh_name + "_global_scale")
             cmds.group(n=mesh_name + "_controls", em=True, p=mesh_name + "_global_scale")
         else:
-            cmds.error("Please select a mesh name")
+            cmds.warning("Please select a mesh name")
 
     def set_kinematic(self):
         """
@@ -142,9 +142,9 @@ class NameManagerDialog(QtWidgets.QMainWindow):
                 for index, object in zip(new_indices, objects_selected):
                     cmds.rename(object, composite_name + "_" + str(index))
             else:
-                cmds.error("You must select an object to rename")
+                cmds.warning("You must select an object to rename")
         else:
-            cmds.error("You must select a mesh name")
+            cmds.warning("You must select a mesh name")
 
 
 myWin = NameManagerDialog(parent=maya_main_window())
