@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="pic">
+    <file>arm.png</file>
+    <file>foot.png</file>
+    <file>hand.png</file>
+    <file>leg.png</file>
+    <file>torso.png</file>
+  </qresource>
+</RCC>
